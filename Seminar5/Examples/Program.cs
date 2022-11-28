@@ -166,4 +166,4 @@ void Case37()
     if(size%2 ==1 ) result[halfSize] = numbers[halfSize];
     PrintArray(result);
 }
-//Case37();
+Case37();
