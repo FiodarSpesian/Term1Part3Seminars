@@ -51,7 +51,7 @@ void Case54()
         { 
             for (int k = 0; k < colums - 1 - j; k++)
             {
-               if(table[i,k] > table[i,k + 1])
+               if(table[i,k] < table[i,k + 1])
                 {
                     int temp = table[i,k];
                     table[i,k] = table[i,k + 1];
@@ -106,54 +106,61 @@ void Case56()
 void Case58()
 {
     int rows = 4;
-    int colums = rows;
+    int colums = 4;
     int[,] table = new int[rows, colums];
-    int count = 1;
-    int temp;
-    for (int i = 1; i < rows + 1; i++)
+    int indexRow = 0;
+    int indexColum = 0;
+
+    int baisRow = 0;
+    int baisColum = 1;
+
+    int steps = colums;
+    int turn = 0;
+    for (int i = 0; i < table.Length; i++)
     {
-        for (int j = 1; j < colums + 1; j++)
+        table[indexRow, indexColum] = i + 1;
+        steps --;
+        if(steps == 0)
         {
-            
-            if(i - 1 == 0)
-            {
-                table[i - 1, j - 1] = count++;
-            }
-            else if(j == colums-1)
-            {
-                table[i - 1, j] = count++;
-            }
-            // else if(i == rows-1)
-            // {
-            //     table[i, colums - j] = count ++;
-            // }
+            steps = colums - 1 - turn/2;
+            int temp = baisRow;
+            baisRow = baisColum;
+            baisColum = -temp;
+            turn ++;
         }
+        indexRow += baisRow;
+        indexColum += baisColum;
     }
     PrintArrayTable(table);
 }
-Case58();
+//Case58();
 
 /*Задача 61: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.*/
 void Case61()
 {
-    int rows = 4;
-    int colums = 5;
-    int[,] table1 = new int[rows, colums];
-    int[,] table2 = new int[rows, colums];
+    int rowsFirst = 4;
+    int columsFirst = 5;
+
+    int rowsSecond = columsFirst;
+    int columsSecond = 4;
+
+    int[,] table1 = new int[rowsFirst, columsFirst];
+    int[,] table2 = new int[rowsSecond, columsSecond];
+    int[,] result = new int[rowsFirst, columsSecond];
+
     FillArrayTable(table1);
-    PrintArrayTable(table1, "Output Table1:");
     FillArrayTable(table2);
-    PrintArrayTable(table2, "Output Table2:");
-    int[,] tableProdukt = new int[rows, colums];
-    //PrintArrayTable(tableProdukt, "Output porodukt of Table1[]*Table2[]:");
-    for (int i = 0; i < rows; i++)
+
+    for (int i = 0; i < rowsFirst; i++)
     {
-        for (int j = 0; j < colums; j++)
+        for (int j = 0; j < columsSecond; j++)
         {
-            tableProdukt[i,j] = table1[i,j] * table2[i,j];
+            for (int k = 0; k < columsFirst; k++)
+            {
+                result[i,j] += table1[i,k] * table1[k,j];
+            }
         }
     }
-    PrintArrayTable(tableProdukt, "Output porodukt of Table1[,]*Table2[,]:");
-
+    PrintArrayTable(result);
 }
 //Case61();
