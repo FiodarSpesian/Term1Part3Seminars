@@ -15,7 +15,7 @@ void ReverseOutNums(int number)
     if(number == 0) return;
     Console.Write(number + " ");
     number --;
-    OutNums(number);
+    ReverseOutNums(number);
 }
 //Case64();
 
@@ -23,7 +23,23 @@ void ReverseOutNums(int number)
 /*Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
 M = 1; N = 15 -> 120
 M = 4; N = 8. -> 30*/
-
+void Case66()
+{
+    Console.Write("Enter start number M: ");
+    int numberM = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Enter last number N: ");
+    int numberN = Convert.ToInt32(Console.ReadLine());
+    int sum = 0;
+    Console.WriteLine(SumDigits(numberM, numberN, sum));
+}
+int SumDigits(int number1, int number2, int sum = 0)
+{
+    if(number1 > number2) return(sum);
+    sum = sum + number1;
+    number1 ++;
+    return SumDigits(number1, number2, sum);
+}
+//Case66();
 
 
 
