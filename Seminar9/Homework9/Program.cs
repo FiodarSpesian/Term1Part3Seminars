@@ -8,17 +8,16 @@ void Case64()
     int number = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine();
     Console.WriteLine($"Your number {number}, all digits till 1: ");
-    OutNums(number);
+    ReverseOutNums(number);
 }
-Case64();
-void OutNums(int number)
+void ReverseOutNums(int number)
 {
     if(number == 0) return;
     Console.Write(number + " ");
     number --;
     OutNums(number);
 }
-
+//Case64();
 
 
 /*Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
