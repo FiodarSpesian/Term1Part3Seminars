@@ -46,3 +46,31 @@ int SumDigits(int number1, int number2, int sum = 0)
 /*Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
 m = 2, n = 3 -> A(m,n) = 9
 m = 3, n = 2 -> A(m,n) = 29*/
+void Case68()
+{
+    Console.Write("Enter first number M: ");
+    int numFirst = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Enter second number N: ");
+    int numSecond = Convert.ToInt32(Console.ReadLine());
+    int sum = 0;
+    Console.WriteLine("Mean of Akerman function: ");
+    Console.WriteLine(Akerman(numFirst, numSecond, sum));
+}
+int Akerman(int firstM, int secondN, int mean = 0)
+{
+   if (firstM == 0) 
+   {
+        mean = mean + secondN + 1;
+        return(mean);
+   }
+   if(firstM > 0 && secondN == 0)
+   {
+        return Akerman(firstM - 1, 1);
+   }
+   if( firstM > 0 && secondN > 0)
+   {
+        return Akerman(firstM - 1, Akerman(firstM, secondN - 1));
+   }
+   return Akerman(firstM, secondN, mean);
+}
+//Case68();

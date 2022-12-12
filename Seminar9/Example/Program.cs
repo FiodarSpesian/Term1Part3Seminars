@@ -78,7 +78,7 @@ void Case69()
     PowAinB(A, B);
 
 }
-Case69();
+//Case69();
 void PowAinB(int A, int B, int res = 1)
 {
     if(B == 0) 
